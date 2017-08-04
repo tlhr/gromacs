@@ -431,6 +431,12 @@ static void do_nb_verlet(t_forcerec *fr,
         gmx_incons("Invalid cut-off scheme passed!");
     }
 
+    /* PLUMED: Distance dependent dielectric constant */
+    if (fr->userint1 > 0 && (nbvg->kernel_type == nbnxnk8x8x8_GPU || nbvg->kernel_type == nbnxnk4x4_PlainC))
+    {
+        gmx_fatal(FARGS, "A distance-dependent dielectric constant is only supported with SIMD 4xn and 2xn kernels!");
+    }
+
     bUsingGpuKernels = (nbvg->kernel_type == nbnxnk8x8x8_GPU);
 
     if (!bUsingGpuKernels)
@@ -451,7 +457,8 @@ static void do_nb_verlet(t_forcerec *fr,
                              enerd->grpp.ener[egCOULSR],
                              fr->bBHAM ?
                              enerd->grpp.ener[egBHAMSR] :
-                             enerd->grpp.ener[egLJSR]);
+                             enerd->grpp.ener[egLJSR],
+                             fr->userint1);
             break;
 
         case nbnxnk8x8x8_GPU:

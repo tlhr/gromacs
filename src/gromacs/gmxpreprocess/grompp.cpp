@@ -2340,6 +2340,19 @@ int gmx_grompp(int argc, char *argv[])
         }
     }
 
+    /* PLUMED: Distance dependent dielectric constant */
+    if (ir->userint1 > 0)
+    {
+        if (ir->coulombtype != eelCUT)
+        {
+            gmx_fatal(FARGS, "A distance-dependent dielectric constant is only supported with cut-off electrostatics!");
+        }
+        else if (ir->cutoff_scheme != ecutsVERLET)
+        {
+            gmx_fatal(FARGS, "A distance-dependent dielectric constant is only supported with the Verlet cut-off scheme!");
+        }
+    }
+
     {
         char   warn_buf[STRLEN];
         double cio = compute_io(ir, sys->natoms, &sys->groups, F_NRE, 1);

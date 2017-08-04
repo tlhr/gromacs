@@ -130,6 +130,7 @@ reduceGroupEnergySimdBuffers(int numGroups, int numGroups_2log,
     }
 }
 
+/* PLUMED Distance dependent dielectric: added `ddd` parameter */
 void
 nbnxn_kernel_cpu(nonbonded_verlet_group_t  *nbvg,
                  const interaction_const_t *ic,
@@ -138,14 +139,24 @@ nbnxn_kernel_cpu(nonbonded_verlet_group_t  *nbvg,
                  int                        clearF,
                  real                      *fshift,
                  real                      *vCoulomb,
-                 real                      *vVdw)
+                 real                      *vVdw,
+                 int                        ddd)
 {
     const nbnxn_atomdata_t  *nbat = nbvg->nbat;
 
     int                      coulkt;
     if (EEL_RF(ic->eeltype) || ic->eeltype == eelCUT)
     {
-        coulkt = coulktRF;
+        /* PLUMED Distance dependent dielectric */
+        if (ddd > 0)
+        {
+            coulkt = coulktDDD;
+        }
+        else
+        {
+            coulkt = coulktRF;
+        }
+        /* END PLUMED Distance dependent dielectric */
     }
     else
     {

@@ -50,6 +50,7 @@
 struct interaction_const_t;
 struct nonbonded_verlet_group_t;
 
+/* PLUMED Distance dependent dielectric: added `ddd` parameter */
 /*! \brief Dispatches the non-bonded N versus M atom cluster CPU kernels.
  *
  * OpenMP parallelization is performed within this function.
@@ -73,6 +74,7 @@ nbnxn_kernel_cpu(nonbonded_verlet_group_t  *nbvg,
                  int                        clearF,
                  real                      *fshift,
                  real                      *vCoulomb,
-                 real                      *vVdw);
+                 real                      *vVdw,
+                 int                        ddd);
 
 #endif

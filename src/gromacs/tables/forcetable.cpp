@@ -918,7 +918,15 @@ static void fill_table(t_tabledata *td, int tp, const t_forcerec *fr,
                 Vcut  = rc12;
                 break;
             case etabCOUL:
-                Vcut  = 1.0/rc;
+                /* PLUMED: Distance dependent dielectric constant */
+                if (fr->userint1 > 0)
+                {
+                    Vcut  = 1.0/rc2;
+                }
+                else
+                {
+                    Vcut  = 1.0/rc;
+                }
                 break;
             case etabEwald:
             case etabEwaldSwitch:
@@ -1052,15 +1060,33 @@ static void fill_table(t_tabledata *td, int tp, const t_forcerec *fr,
                 }
                 break;
             case etabCOUL:
-                Vtab  = 1.0/r;
-                Ftab  = 1.0/r2;
+                /* PLUMED: Distance dependent dielectric constant */
+                if (fr->userint1 > 0)
+                {
+                    Vtab  = 1.0/r2;
+                    Ftab  = 2.0/(r2*r);
+                }
+                else
+                {
+                    Vtab  = 1.0/r;
+                    Ftab  = 1.0/r2;
+                }
                 break;
             case etabCOULSwitch:
             case etabShift:
                 if (r < rc)
                 {
-                    Vtab  = 1.0/r;
-                    Ftab  = 1.0/r2;
+                    /* PLUMED: Distance dependent dielectric constant */
+                    if (fr->userint1 > 0)
+                    {
+                        Vtab  = 1.0/r2;
+                        Ftab  = 2.0/(r2*r);
+                    }
+                    else
+                    {
+                        Vtab  = 1.0/r;
+                        Ftab  = 1.0/r2;
+                    }
                 }
                 break;
             case etabEwald:

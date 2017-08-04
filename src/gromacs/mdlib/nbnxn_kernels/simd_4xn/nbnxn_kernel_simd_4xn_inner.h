@@ -641,6 +641,13 @@
     vcoul_S1    = selectByMask(vcoul_S1, wco_S1);
     vcoul_S2    = selectByMask(vcoul_S2, wco_S2);
     vcoul_S3    = selectByMask(vcoul_S3, wco_S3);
+#ifdef DIST_DIELEC
+    /* PLUMED: Distance dependent dielectric constant */
+    vcoul_S0    = vcoul_S0 * rinv_ex_S0;
+    vcoul_S1    = vcoul_S1 * rinv_ex_S1;
+    vcoul_S2    = vcoul_S2 * rinv_ex_S2;
+    vcoul_S3    = vcoul_S3 * rinv_ex_S3;
+#endif
 #endif
 
 #endif /* CALC_COULOMB */
@@ -1111,6 +1118,17 @@
 #endif
 #endif /* CALC_LJ */
 #endif /* CALC_ENERGIES */
+
+#ifdef CALC_COULOMB
+#ifdef DIST_DIELEC
+    /* PLUMED: Distance dependent dielectric constant */
+    const SimdReal fact(2.0f);
+    frcoul_S0    = frcoul_S0 * rinv_S0 * fact;
+    frcoul_S1    = frcoul_S1 * rinv_S1 * fact;
+    frcoul_S2    = frcoul_S2 * rinv_S2 * fact;
+    frcoul_S3    = frcoul_S3 * rinv_S3 * fact;
+#endif
+#endif
 
 #ifdef CALC_LJ
 #ifdef CALC_COULOMB

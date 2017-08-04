@@ -80,10 +80,11 @@ typedef void (nbk_func_noener)(const nbnxn_pairlist_t     *nbl,
  */
 typedef nbk_func_noener *p_nbk_func_noener;
 
+/* PLUMED Distance dependent dielectric: added `coulktDDD` option*/
 /*! \brief Kinds of electrostatic treatments in SIMD Verlet kernels
  */
 enum {
-    coulktRF, coulktTAB, coulktTAB_TWIN, coulktEWALD, coulktEWALD_TWIN, coulktNR
+  coulktRF, coulktTAB, coulktTAB_TWIN, coulktEWALD, coulktEWALD_TWIN, coulktDDD, coulktNR
 };
 
 /*! \brief Kinds of Van der Waals treatments in SIMD Verlet kernels

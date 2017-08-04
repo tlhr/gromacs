@@ -72,6 +72,14 @@ nbk_func_ener         nbnxn_kernel_ElecEwTwinCut_VdwLJ_VgrpF_2xnn;
 nbk_func_ener         nbnxn_kernel_ElecEwTwinCut_VdwLJFSw_VgrpF_2xnn;
 nbk_func_ener         nbnxn_kernel_ElecEwTwinCut_VdwLJPSw_VgrpF_2xnn;
 nbk_func_ener         nbnxn_kernel_ElecEwTwinCut_VdwLJEwCombGeom_VgrpF_2xnn;
+/* PLUMED Distance dependent dielectric */
+nbk_func_ener         nbnxn_kernel_ElecRFDDD_VdwLJCombGeom_VgrpF_2xnn;
+nbk_func_ener         nbnxn_kernel_ElecRFDDD_VdwLJCombLB_VgrpF_2xnn;
+nbk_func_ener         nbnxn_kernel_ElecRFDDD_VdwLJ_VgrpF_2xnn;
+nbk_func_ener         nbnxn_kernel_ElecRFDDD_VdwLJFSw_VgrpF_2xnn;
+nbk_func_ener         nbnxn_kernel_ElecRFDDD_VdwLJPSw_VgrpF_2xnn;
+nbk_func_ener         nbnxn_kernel_ElecRFDDD_VdwLJEwCombGeom_VgrpF_2xnn;
+/* END PLUMED Distance dependent dielectric */
 
 nbk_func_ener         nbnxn_kernel_ElecRF_VdwLJCombGeom_VF_2xnn;
 nbk_func_ener         nbnxn_kernel_ElecRF_VdwLJCombLB_VF_2xnn;
@@ -103,6 +111,14 @@ nbk_func_ener         nbnxn_kernel_ElecEwTwinCut_VdwLJ_VF_2xnn;
 nbk_func_ener         nbnxn_kernel_ElecEwTwinCut_VdwLJFSw_VF_2xnn;
 nbk_func_ener         nbnxn_kernel_ElecEwTwinCut_VdwLJPSw_VF_2xnn;
 nbk_func_ener         nbnxn_kernel_ElecEwTwinCut_VdwLJEwCombGeom_VF_2xnn;
+/* PLUMED Distance dependent dielectric */
+nbk_func_ener         nbnxn_kernel_ElecRFDDD_VdwLJCombGeom_VF_2xnn;
+nbk_func_ener         nbnxn_kernel_ElecRFDDD_VdwLJCombLB_VF_2xnn;
+nbk_func_ener         nbnxn_kernel_ElecRFDDD_VdwLJ_VF_2xnn;
+nbk_func_ener         nbnxn_kernel_ElecRFDDD_VdwLJFSw_VF_2xnn;
+nbk_func_ener         nbnxn_kernel_ElecRFDDD_VdwLJPSw_VF_2xnn;
+nbk_func_ener         nbnxn_kernel_ElecRFDDD_VdwLJEwCombGeom_VF_2xnn;
+/* END PLUMED Distance dependent dielectric */
 
 nbk_func_noener       nbnxn_kernel_ElecRF_VdwLJCombGeom_F_2xnn;
 nbk_func_noener       nbnxn_kernel_ElecRF_VdwLJCombLB_F_2xnn;
@@ -134,6 +150,14 @@ nbk_func_noener       nbnxn_kernel_ElecEwTwinCut_VdwLJ_F_2xnn;
 nbk_func_noener       nbnxn_kernel_ElecEwTwinCut_VdwLJFSw_F_2xnn;
 nbk_func_noener       nbnxn_kernel_ElecEwTwinCut_VdwLJPSw_F_2xnn;
 nbk_func_noener       nbnxn_kernel_ElecEwTwinCut_VdwLJEwCombGeom_F_2xnn;
+/* PLUMED Distance dependent dielectric */
+nbk_func_noener       nbnxn_kernel_ElecRFDDD_VdwLJCombGeom_F_2xnn;
+nbk_func_noener       nbnxn_kernel_ElecRFDDD_VdwLJCombLB_F_2xnn;
+nbk_func_noener       nbnxn_kernel_ElecRFDDD_VdwLJ_F_2xnn;
+nbk_func_noener       nbnxn_kernel_ElecRFDDD_VdwLJFSw_F_2xnn;
+nbk_func_noener       nbnxn_kernel_ElecRFDDD_VdwLJPSw_F_2xnn;
+nbk_func_noener       nbnxn_kernel_ElecRFDDD_VdwLJEwCombGeom_F_2xnn;
+/* END PLUMED Distance dependent dielectric */
 
 
 
@@ -185,6 +209,16 @@ p_nbk_func_noener nbnxn_kernel_noener_simd_2xnn[coulktNR][vdwktNR] =
         nbnxn_kernel_ElecEwTwinCut_VdwLJPSw_F_2xnn,
         nbnxn_kernel_ElecEwTwinCut_VdwLJEwCombGeom_F_2xnn,
     },
+    /* PLUMED Distance dependent dielectric */
+    {
+        nbnxn_kernel_ElecRFDDD_VdwLJCombGeom_F_2xnn,
+        nbnxn_kernel_ElecRFDDD_VdwLJCombLB_F_2xnn,
+        nbnxn_kernel_ElecRFDDD_VdwLJ_F_2xnn,
+        nbnxn_kernel_ElecRFDDD_VdwLJFSw_F_2xnn,
+        nbnxn_kernel_ElecRFDDD_VdwLJPSw_F_2xnn,
+        nbnxn_kernel_ElecRFDDD_VdwLJEwCombGeom_F_2xnn,
+    },
+    /* END PLUMED Distance dependent dielectric */
 };
 
 p_nbk_func_ener nbnxn_kernel_ener_simd_2xnn[coulktNR][vdwktNR] =
@@ -229,6 +263,16 @@ p_nbk_func_ener nbnxn_kernel_ener_simd_2xnn[coulktNR][vdwktNR] =
         nbnxn_kernel_ElecEwTwinCut_VdwLJPSw_VF_2xnn,
         nbnxn_kernel_ElecEwTwinCut_VdwLJEwCombGeom_VF_2xnn,
     },
+    /* PLUMED Distance dependent dielectric */
+    {
+        nbnxn_kernel_ElecRFDDD_VdwLJCombGeom_VF_2xnn,
+        nbnxn_kernel_ElecRFDDD_VdwLJCombLB_VF_2xnn,
+        nbnxn_kernel_ElecRFDDD_VdwLJ_VF_2xnn,
+        nbnxn_kernel_ElecRFDDD_VdwLJFSw_VF_2xnn,
+        nbnxn_kernel_ElecRFDDD_VdwLJPSw_VF_2xnn,
+        nbnxn_kernel_ElecRFDDD_VdwLJEwCombGeom_VF_2xnn,
+    },
+    /* END PLUMED Distance dependent dielectric */
 };
 
 p_nbk_func_ener nbnxn_kernel_energrp_simd_2xnn[coulktNR][vdwktNR] =
@@ -273,6 +317,16 @@ p_nbk_func_ener nbnxn_kernel_energrp_simd_2xnn[coulktNR][vdwktNR] =
         nbnxn_kernel_ElecEwTwinCut_VdwLJPSw_VgrpF_2xnn,
         nbnxn_kernel_ElecEwTwinCut_VdwLJEwCombGeom_VgrpF_2xnn,
     },
+    /* PLUMED Distance dependent dielectric */
+    {
+        nbnxn_kernel_ElecRFDDD_VdwLJCombGeom_VgrpF_2xnn,
+        nbnxn_kernel_ElecRFDDD_VdwLJCombLB_VgrpF_2xnn,
+        nbnxn_kernel_ElecRFDDD_VdwLJ_VgrpF_2xnn,
+        nbnxn_kernel_ElecRFDDD_VdwLJFSw_VgrpF_2xnn,
+        nbnxn_kernel_ElecRFDDD_VdwLJPSw_VgrpF_2xnn,
+        nbnxn_kernel_ElecRFDDD_VdwLJEwCombGeom_VgrpF_2xnn,
+    },
+    /* END PLUMED Distance dependent dielectric */
 };
 
 

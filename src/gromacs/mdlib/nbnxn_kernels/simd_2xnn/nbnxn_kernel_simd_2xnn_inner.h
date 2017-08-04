@@ -475,6 +475,11 @@
     /* Mask energy for cut-off and diagonal */
     vcoul_S0    = selectByMask(vcoul_S0, wco_S0);
     vcoul_S2    = selectByMask(vcoul_S2, wco_S2);
+#ifdef DIST_DIELEC
+    /* PLUMED: Distance dependent dielectric constant */
+    vcoul_S0    = vcoul_S0 * rinv_ex_S0;
+    vcoul_S2    = vcoul_S2 * rinv_ex_S2;
+#endif
 #endif
 
 #endif /* CALC_COULOMB */
@@ -840,6 +845,15 @@
 #endif
 #endif /* CALC_LJ */
 #endif /* CALC_ENERGIES */
+
+#ifdef CALC_COULOMB
+#ifdef DIST_DIELEC
+    /* PLUMED: Distance dependent dielectric constant */
+    const SimdReal fact(2.0f);
+    frcoul_S0    = frcoul_S0 * rinv_S0 * fact;
+    frcoul_S2    = frcoul_S2 * rinv_S2 * fact;
+#endif
+#endif
 
 #ifdef CALC_LJ
 #ifdef CALC_COULOMB
